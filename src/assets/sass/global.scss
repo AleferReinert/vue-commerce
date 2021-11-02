@@ -1,0 +1,373 @@
+@use 'sass:math';
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+// Colors
+$color-primary: #f1625f;
+$color-secondary: #3e3b3a;
+$color-black-default: rgba(0,0,0,0.85);
+$color-link: rgb(8, 101, 138);
+$color-border: #dedede;
+$color-success: #419b18;
+
+// Fonts
+$font-primary: 'Montserrat', sans-serif;
+
+$font-9px: 0.563rem;
+$font-10px: 0.625rem;
+$font-12px: 0.75rem;
+$font-13px: 0.813rem;
+$font-14px: 0.875rem;
+$font-16px: 1rem;
+$font-17px: 1.063rem;
+$font-18px: 1.125rem;
+$font-20px: 1.25rem;
+$font-22px: 1.375rem;
+$font-24px: 1.5rem;
+$font-26px: 1.625rem;
+$font-28px: 1.75rem;
+$font-30px: 1.875rem;
+$font-32px: 2rem;
+
+// Exibir uppercase ou não
+$capitalization: uppercase;
+
+// Duração para hovers
+$transition-duration: 0.25s;
+
+// Layout fluido
+$container-fluid: false;
+
+// Gap
+$column-gap: 15px;
+$row-gap: 35px;
+
+// Containers
+$container-small: 540px;
+$container-medium: 720px;
+$container-large: 960px;
+$container-extralarge: 1140px;
+
+// Breakpoints
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-extralarge: 1200px;
+
+// Forms
+$form-radius: 0;
+
+// Reset
+body, p, ul, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+address {
+    font-style: normal;
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    font-family: inherit;
+    margin: 0;
+}
+
+input:focus,
+a:focus-visible,
+select:focus {
+    outline: none;
+}
+
+::placeholder {
+    opacity: 1;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    padding: 0;
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+    label {
+        font-weight: 400;
+    }
+}
+
+label {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+select {
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+// Animations
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .15s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+#background-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(0,0,0,0.5);
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $column-gap;
+    box-sizing: border-box;
+
+    @media all and (min-width: $breakpoint-medium) {
+
+        @if $container-fluid == false {
+            max-width: $container-medium;
+        }
+    }
+    
+    @media all and (min-width: $breakpoint-large) {
+
+        @if $container-fluid == false {
+            max-width: $container-large;
+        }
+    }
+    
+    @media all and (min-width: $breakpoint-extralarge) {
+        
+        @if $container-fluid == false {
+            max-width: $container-extralarge;
+        }
+    }
+}
+
+// Buttons
+.btn {
+    text-transform: $capitalization;
+    padding: 0 15px;
+    font-family: $font-primary;
+    font-size: $font-12px;
+    height: 40px;
+    border-radius: $form-radius;
+    box-sizing: border-box;
+    transition: all 0.15s linear;
+}
+
+.btn-default {
+    color: $color-black-default;
+    border: 1px solid $color-border;
+}
+
+.btn-primary {
+    color: #fff;
+    background: $color-primary;
+
+    &:hover {
+        background: darken($color-primary, 5%);
+    }
+}
+
+.btn-success {
+    color: #fff;
+    background: $color-success;
+
+    &:hover {
+        background: darken($color-success, 5%);
+    }
+}
+
+// Inputs
+.input {
+    border: 1px solid $color-border;
+    border-radius: $form-radius;
+    height: 40px;
+    background: #fff;
+    padding: 0 10px;
+    font-size: $font-12px;
+    font-family: $font-primary;
+    box-sizing: border-box;
+    color: inherit;
+    transition: all .15s linear;
+
+    &::placeholder {
+        color: inherit;
+        opacity: 0.5;
+    }
+
+    &:focus {
+        border-color: darken($color-border, 30%);
+    }
+}
+
+[type="checkbox"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+
+    &::after {
+        content:'';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border: 1px solid $color-border;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all .1s linear;
+    }
+
+    &:checked::after {
+        border-color: $color-primary;
+        background-color: $color-primary;
+    }
+}
+
+[type="radio"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+
+    &::after {
+        content:'';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border: 1px solid $color-border;
+        border-radius: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all .1s linear;
+    }
+
+    &:checked::after {
+        border-color: $color-primary;
+        border-width: 6px;
+    }
+}
+
+select {
+    transition: all 0.5s linear;
+    border: 1px solid $color-border;
+    height: 40px;
+    padding: 0 10px;
+}
+
+span.required {
+    color: #Fc0d1b;
+    margin-right: 3px;
+}
+
+// Typography
+html {
+	font-size: 16px;
+}
+
+body {
+	font-family: $font-primary;
+	color: $color-black-default;
+}
+
+.page-title {
+	margin: 20px 0 15px;
+    text-align: center;
+
+	.title {
+		font-size: $font-26px;
+		color: $color-secondary;
+	}
+}
+
+@media all and (min-width: $breakpoint-medium) {
+
+    .page-title {
+        text-align: left;
+    }
+}
+
+.page-only-text {
+
+    .content {
+        max-width: $container-medium;
+        margin: $row-gap auto;
+    }
+
+    h2 {
+        color: $color-black-default;
+        font-size: $font-18px;
+        font-weight: 500;
+        margin-top: 30px;
+    }
+
+    p {
+        font-size: $font-13px;
+        text-indent: 20px;
+        line-height: 20px;
+        text-align: justify;
+
+        + p {
+            margin-top: 10px;
+        }
+    }
+}
+
+// Cabeçalho de seção (detalhes do produto)
+.header-section {
+	margin-bottom: 25px;
+	border-bottom: 2px solid $color-primary; 
+	padding-bottom: 8px;
+
+	.title {
+		font-size: $font-18px;
+		color: $color-secondary;
+		text-transform: $capitalization;
+	}
+}
+
+@media all and (min-width: $breakpoint-extralarge) {
+	.header-section {
+		margin-bottom: $row-gap;
+		padding-bottom: 10px;
+	
+		.title {
+			font-size: $font-20px;
+		}
+	}
+}

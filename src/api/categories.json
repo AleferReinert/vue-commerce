@@ -1,0 +1,308 @@
+[
+    {
+        "name": "Masculino",
+        "link": "/masculino",
+        "subcategories": [
+            {
+                "name": "Camisas",
+                "link": "/masculino/camisas",
+                "subcategories": [
+                    {
+                        "name": "Manga Curta",
+                        "link": "/masculino/camisas/manga-curta"
+                    },
+                    {
+                        "name": "Regatas",
+                        "link": "/masculino/camisas/regatas"
+                    },
+                    {
+                        "name": "Listradas",
+                        "link": "/masculino/camisas/listradas"
+                    },
+                    {
+                        "name": "Personalizadas",
+                        "link": "/masculino/camisas/personalizadas"
+                    },
+                    {
+                        "name": "Polos",
+                        "link": "/masculino/camisas/polos"
+                    }
+                ]
+            },
+            {
+                "name": "Calças",
+                "link": "/masculino/calcas",
+                "subcategories": [
+                    {
+                        "name": "Jeans",
+                        "link": "/masculino/calcas/jeans"
+                    },
+                    {
+                        "name": "Malha",
+                        "link": "/masculino/calcas/malha"
+                    },
+                    {
+                        "name": "Moletom",
+                        "link": "/masculino/calcas/moletom"
+                    },
+                    {
+                        "name": "Tactel",
+                        "link": "/masculino/calcas/tactel"
+                    }
+                ]
+            },
+            {
+                "name": "Calçados",
+                "link": "/masculino/calcados",
+                "subcategories": [
+                    {
+                        "name": "Tênis",
+                        "link": "/masculino/calcados/tenis"
+                    },
+                    {
+                        "name": "Coturnos",
+                        "link": "/masculino/calcados/coturnos"
+                    },
+                    {
+                        "name": "Chinelos",
+                        "link": "/masculino/calcados/chinelos"
+                    },
+                    {
+                        "name": "Pantufas",
+                        "link": "/masculino/calcados/pantufas"
+                    }
+                ]
+            },
+            {
+                "name": "Roupas Íntimas",
+                "link": "/masculino/roupas-intimas",
+                "subcategories": [
+                    {
+                        "name": "Meias",
+                        "link": "/masculino/roupas-intimas/meias"
+                    },
+                    {
+                        "name": "Cuecas",
+                        "link": "/masculino/roupas-intimas/cuecas"
+                    },
+                    {
+                        "name": "Pijamas",
+                        "link": "/masculino/roupas-intimas/pijamas"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Feminino",
+        "link": "/feminino",
+        "subcategories": [
+            {
+                "name": "Camisas",
+                "link": "/feminino/camisas",
+                "subcategories": [
+                    {
+                        "name": "Manga Curta",
+                        "link": "/feminino/camisas/manga-curta"
+                    },
+                    {
+                        "name": "Regatas",
+                        "link": "/feminino/camisas/regatas"
+                    },
+                    {
+                        "name": "Listradas",
+                        "link": "/feminino/camisas/listradas"
+                    },
+                    {
+                        "name": "Personalizadas",
+                        "link": "/feminino/camisas/personalizadas"
+                    }
+                ]
+            },
+            {
+                "name": "Calças",
+                "link": "/feminino/calcas",
+                "subcategories": [
+                    {
+                        "name": "Jeans",
+                        "link": "/feminino/calcas/jeans"
+                    },
+                    {
+                        "name": "Malha",
+                        "link": "/feminino/calcas/malha"
+                    },
+                    {
+                        "name": "Moletom",
+                        "link": "/feminino/calcas/moletom"
+                    },
+                    {
+                        "name": "Tactel",
+                        "link": "/feminino/calcas/tactel"
+                    },
+                    {
+                        "name": "Legging",
+                        "link": "/feminino/calcas/legging"
+                    },
+                    {
+                        "name": "Boca de sino",
+                        "link": "/feminino/calcas/boca-de-sino"
+                    }
+                ]
+            },
+            {
+                "name": "Calçados",
+                "link": "/feminino/calcados",
+                "subcategories": [
+                    {
+                        "name": "Tênis",
+                        "link": "/feminino/calcados/tenis"
+                    },
+                    {
+                        "name": "Coturnos",
+                        "link": "/feminino/calcados/coturnos"
+                    },
+                    {
+                        "name": "Chinelos",
+                        "link": "/feminino/calcados/chinelos"
+                    },
+                    {
+                        "name": "Pantufas",
+                        "link": "/feminino/calcados/pantufas"
+                    },
+                    {
+                        "name": "Botas",
+                        "link": "/feminino/calcados/botas"
+                    },
+                    {
+                        "name": "Saltos",
+                        "link": "/feminino/calcados/saltos"
+                    },
+                    {
+                        "name": "Sandálias",
+                        "link": "/feminino/calcados/sandalias"
+                    }
+                ]
+            },
+            {
+                "name": "Acessórios",
+                "link": "/feminino/acessorios",
+                "subcategories": [
+                    {
+                        "name": "Bolsas",
+                        "link": "/feminino/acessorios/bolsas"
+                    },
+                    {
+                        "name": "Relógios",
+                        "link": "/feminino/acessorios/relogios"
+                    },
+                    {
+                        "name": "Pulseiras",
+                        "link": "/feminino/acessorios/pulseiras"
+                    },
+                    {
+                        "name": "Óculos",
+                        "link": "/feminino/acessorios/oculos"
+                    },
+                    {
+                        "name": "Lenços",
+                        "link": "/feminino/acessorios/lencos"
+                    }
+                ]
+            },
+            {
+                "name": "Vestidos",
+                "link": "/feminino/vestidos"
+            }
+        ]
+    },
+    {
+        "name": "Infantil",
+        "link": "/infantil"
+    },
+    {
+        "name": "Básico",
+        "link": "/basico"
+    },
+    {
+        "name": "Esportes",
+        "link": "/esportes"
+    },
+    {
+        "name": "Novidades",
+        "link": "/novidades"
+    },
+    {
+        "name": "Ofertas",
+        "link": "/ofertas"
+    },
+    {
+        "name": "Marcas",
+        "link": "/marcas",
+        "subcategories": [
+            {
+                "name": "Adidas",
+                "link": "/marcas/adidas"
+            },
+            {
+                "name": "Converse",
+                "link": "/marcas/converse"
+            },
+            {
+                "name": "Mormai",
+                "link": "/marcas/mormai"
+            },
+            {
+                "name": "Ray Ban",
+                "link": "/marcas/ray-ban"
+            },
+            {
+                "name": "Calvin Klein",
+                "link": "/marcas/calvin-klein"
+            },
+            {
+                "name": "Everlast",
+                "link": "/marcas/everlast"
+            },
+            {
+                "name": "Nike",
+                "link": "/marcas/nike"
+            },
+            {
+                "name": "Reebok",
+                "link": "/marcas/reebok"
+            },
+            {
+                "name": "Cavalera",
+                "link": "/marcas/cavalera"
+            },
+            {
+                "name": "Lacoste",
+                "link": "/marcas/lacoste"
+            },
+            {
+                "name": "Oakley",
+                "link": "/marcas/oakley"
+            },
+            {
+                "name": "Vans",
+                "link": "/marcas/vans"
+            },
+            {
+                "name": "Colcci",
+                "link": "/marcas/colcci"
+            },
+            {
+                "name": "Mizzuno",
+                "link": "/marcas/mizzuno"
+            },
+            {
+                "name": "Puma",
+                "link": "/marcas/puma"
+            }
+        ]
+    },
+    {
+        "name": "Outlet",
+        "link": "/outlet"
+    }
+]

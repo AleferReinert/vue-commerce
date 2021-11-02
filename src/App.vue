@@ -1,32 +1,60 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<Header v-if="!$route.meta.hideSearch" />
+		<HeaderSecondary v-if="$route.meta.hideSearch" />
+
+		<router-view path="$router.key" />
+		
+		<Footer v-if="!$route.meta.hideFooter" />
+	</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from '@/components/Header.vue'
+import HeaderSecondary from '@/components/HeaderSecondary.vue'
+import Footer from '@/components/Footer.vue'
+import company from '@/api/company.json'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+	name: 'app',
+	data(){
+		return {
+			company
+		}
+	},
+	components: {
+		Header,
+		HeaderSecondary,
+		Footer
+	},
+	mounted() {
+		setTimeout(function(){
+			let headerHeight = document.getElementsByTagName('header')[0].offsetHeight
+			document.getElementsByTagName('body')[0].style['padding-top'] = `${headerHeight}px`
+		}, 500)
+	},
+	computed: {
+		pageTitle: function() {
+			return this.$route.meta.title;
+		}
+	},
+	watch: {
+        $route: {
+            immediate: true,
+            handler(to) {
+				if(to.meta.title){
+					document.title = `${this.company.name} - ${to.meta.title}`
+				} else {
+					document.title = this.company.name
+				}
+            }
+        },
     }
-  }
 }
+</script>
+
+<style lang="scss">
+	main {
+		min-height: 400px;
+	}
 </style>

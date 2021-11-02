@@ -1,0 +1,19 @@
+{
+    "title": "Camiseta Adidas Trefoil",
+    "id": "12345678",
+    "price": "9990",
+    "sizes": ["p","m","g","gg","egg"],
+    "colors": [
+        {"name": "Vermelho","value": "red"},
+        {"name": "Azul","value": "blue"},
+        {"name": "Preto","value": "black"},
+        {"name": "Branco","value": "white"},
+        {"name": "Verde","value": "green"}
+    ],
+    "description": "Volte às origens do estilo clássico. Esta camiseta adidas oferece o destaque que ele merece. O algodão macio faz dela uma peça irresistível, que você vai escolher várias e várias vezes. Nossas peças em algodão apoiam a plantação sustentável dessa matéria-prima. Isso faz parte da nossa ambição de eliminar o lixo plástico.",
+    "technicalInformations": [
+        {"name": "SKU","value": "AD464SRF62KFD"},
+        {"name": "Modelo","value": "Adidas Originals GN2899"},
+        {"name": "Composição","value": "92% Algodão e 8% Elastano"}
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "name": "Minha Lojinha",
+    "corporateName": "Minha Lojinha LTDA",
+    "phone1": "(47) 99955-8181",
+    "phone2": "(47) 99944-3232",
+    "email": "aleferreinert@gmail.com",
+    "cnpj": "86.310.500/0007-10",
+    "address": {
+        "city": "Indaial",
+        "number": "350",
+        "state": "Santa Catarina",
+        "uf": "SC",
+        "district": "Encano do Norte",
+        "street": "Guaratuba",
+        "zipCode": "89085-152"
+    },
+    "social": [
+        {
+            "name": "Facebook",
+            "url": "http://www.facebook.com/MinhaLojinha"
+        },
+        {
+            "name": "Instagram",
+            "url": "http://www.instagram.com/MinhaLojinha"
+        },
+        {
+            "name": "Twitter",
+            "url": "http:www.twitter.com/MinhaLojinha"
+        },
+        {
+            "name": "Whatsapp",
+            "url": "https://web.whatsapp.com/send?phone=5547999558118"
+        }
+    ]
+}

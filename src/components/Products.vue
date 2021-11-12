@@ -68,7 +68,7 @@ export default {
 
     .price-final {
         font-size: $font-12px;
-        color: $color-secondary;
+        color: $secondary-color;
         grid-row: 4;
 
         span {
@@ -124,7 +124,7 @@ export default {
         }
 
         .price-final {
-            color: $color-primary;
+            color: $primary-color;
         }
     }
 }

@@ -27,12 +27,6 @@ export default {
 		HeaderSecondary,
 		Footer
 	},
-	mounted() {
-		setTimeout(function(){
-			let headerHeight = document.getElementsByTagName('header')[0].offsetHeight
-			document.getElementsByTagName('body')[0].style['padding-top'] = `${headerHeight}px`
-		}, 500)
-	},
 	computed: {
 		pageTitle: function() {
 			return this.$route.meta.title;
@@ -48,13 +42,7 @@ export default {
 					document.title = this.company.name
 				}
             }
-        },
+        }
     }
 }
 </script>
-
-<style lang="scss">
-	main {
-		min-height: 400px;
-	}
-</style>

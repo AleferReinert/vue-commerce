@@ -1,24 +1,17 @@
 <template>
-    <span>
-        <font-awesome-icon icon="angle-down" class="icon-collapsed" />
-        <font-awesome-icon icon="angle-up" class="icon-show" />
+    <span class="collapse-icons" v-bind:class="{active: element}">
+        <font-awesome-icon icon="angle-down" v-show="!element" />
+        <font-awesome-icon icon="angle-up" v-show="element" />
     </span>
 </template>
 
 <script>
 export default {
-    name: 'CollapseIcons'
+    name: 'CollapseIcons',
+    props: ['element']
 }
 </script>
 
 <style lang="scss">
-.collapsed {
-    .icon-collapsed {display: block}
-    .icon-show {display: none}
-}
 
-.not-collapsed {
-    .icon-collapsed {display: none}
-    .icon-show {display: block}
-}
 </style>

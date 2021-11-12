@@ -151,7 +151,7 @@ export default {
         }
 
         a {
-            color: $color-black-default;
+            color: $black-color;
             transition: all 0.1s linear;
             display: block;
             letter-spacing: 0.4px;
@@ -174,10 +174,10 @@ export default {
                     font-weight: 600;
                     text-transform: $capitalization;
                     margin: 10px 0;
-                    color: $color-secondary;
+                    color: $secondary-color;
 
                     &:hover {
-                        color: darken($color-secondary, 10%);
+                        color: darken($secondary-color, 10%);
                     }
                 }
             }

@@ -75,7 +75,7 @@ export default {
         margin-bottom: $row-gap;
 
 		.VueCarousel-dot--active {
-			background-color: $color-primary !important;
+			background-color: $primary-color !important;
 		}
 
 		.VueCarousel-dot:focus {

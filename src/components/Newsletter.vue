@@ -1,7 +1,7 @@
 <template>
     <div class="bar-newsletter">
         <div class="container">
-            <form method="post" @submit="checkForm()" action="">
+            <form method="post" action="">
                 <label for="">Cadastre-se para receber ofertas e descontos exclusivos!</label>
                 <input type="email" placeholder="Digite seu melhor e-mail..." class="input">
                 <button type="submit" class="btn btn-success">Cadastrar</button>
@@ -11,15 +11,7 @@
 </template>
 <script>
 export default {
-    name: 'Newsletter',
-    data(){
-        
-    },
-    methods: {
-        checkForm(){
-
-        }
-    }
+    name: 'Newsletter'
 }
 </script>
 <style lang="scss">

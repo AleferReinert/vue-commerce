@@ -1,38 +1,45 @@
 <template>
   <header id="header">
-    <b-collapse v-if="$isMobile()" id="menu-mobile" class="hidden">
-        <button class="btn-close-menu-mobile" v-b-toggle.menu-mobile>
-            <font-awesome-icon icon="times" />
-        </button>
-        <nav class="nav-login">
-            <ul>
-                <li v-if="authenticated">
-                    <button type="button" v-b-toggle="'list-profile'">
-                        <font-awesome-icon icon="user" />
-                        Olá, João
-                        <font-awesome-icon icon="angle-down" class="icon-collapsed" />
-                        <font-awesome-icon icon="angle-up" class="icon-show" />
-                    </button>
-                    <b-collapse id="list-profile">
-                        <ul>
-                            <li><router-link to="">Meus Dados</router-link></li>
-                            <li><router-link to="">Meus Pedidos</router-link></li>
-                            <li><router-link to="">Lista de Desejos</router-link></li>
-                        </ul>
-                    </b-collapse>
-                </li>
-                <li v-if="authenticated">
-                    <router-link to="">
-                        <font-awesome-icon icon="sign-out-alt" />
-                        Sair
-                    </router-link>
-                </li>
-                <li v-if="!authenticated"><router-link to="/cadastro">Cadastre-se</router-link></li>
-                <li v-if="!authenticated"><router-link to="/login">Entrar</router-link></li>
-            </ul>
-        </nav>
-        <MenuCategoriesMobile />
-    </b-collapse>
+    <template v-if="$isMobile()">
+        <div v-bind:class="{active: menuMobile}" id="menu-mobile" class="hidden">
+            <button class="btn-close-menu-mobile" @click="toggleMenuMobile">
+                <font-awesome-icon icon="times" />
+            </button>
+            <nav class="nav-login">
+                <ul>
+                    <li v-if="authenticated">
+                        <button type="button" @click="toggleListProfile">
+                            <font-awesome-icon icon="user" />
+                            Olá, João
+                            <collapseIcons :element="listProfile" />
+                        </button>
+                        <collapse>
+                            <div id="list-profile" v-show="listProfile">
+                                <ul>
+                                    <li><router-link to="/minha-conta/meus-dados">Meus Dados</router-link></li>
+                                    <li><router-link to="/minha-conta/minhas-compras">Meus Pedidos</router-link></li>
+                                    <li><router-link to="/lista-de-desejos">Lista de Desejos</router-link></li>
+                                </ul>
+                            </div>
+                        </collapse>
+                    </li>
+                    <li v-if="authenticated">
+                        <router-link to="">
+                            <font-awesome-icon icon="sign-out-alt" />
+                            Sair
+                        </router-link>
+                    </li>
+                    <li v-if="!authenticated">
+                        <router-link to="/cadastro">Cadastre-se</router-link>
+                    </li>
+                    <li v-if="!authenticated">
+                        <router-link to="/login">Entrar</router-link>
+                    </li>
+                </ul>
+            </nav>
+            <MenuCategoriesMobile />
+        </div>
+    </template>
 
     <div class="bar-top">
         <div class="container">
@@ -49,10 +56,10 @@
                             Olá, João
                         </button>
                         <transition name="fade">
-                            <ul v-show="dropdownMyAccount" class="dropdown-account">
-                                <li><router-link to=""><font-awesome-icon icon="user" />Meus Dados</router-link></li>
-                                <li><router-link to=""><font-awesome-icon icon="shopping-cart" />Meus Pedidos</router-link></li>
-                                <li><router-link to=""><font-awesome-icon icon="heart" />Lista de Desejos</router-link></li>
+                            <ul @click="toggleMyAccount" v-show="dropdownMyAccount" class="dropdown-account">
+                                <li><router-link to="/minha-conta/meus-dados"><font-awesome-icon icon="user" />Meus Dados</router-link></li>
+                                <li><router-link to="/minha-conta/minhas-compras"><font-awesome-icon icon="shopping-cart" />Meus Pedidos</router-link></li>
+                                <li><router-link to="/lista-de-desejos"><font-awesome-icon icon="heart" />Lista de Desejos</router-link></li>
                             </ul>
                         </transition>
                     </li>
@@ -81,7 +88,7 @@
     <div class="bar-middle">
         <div class="container">
             <div class="column">
-                <button class="btn-menu-mobile" v-b-toggle.menu-mobile>
+                <button type="button" class="btn-menu-mobile" @click="toggleMenuMobile">
                     <font-awesome-icon icon="bars" />
                 </button>
             </div>
@@ -93,26 +100,26 @@
                 </div>
             </div>
             <div class="column">
-                <b-collapse class="search" id="header-search">
+                <div class="search" id="header-search">
                     <form action="">
                         <input type="search" placeholder="Digite sua busca..." class="input">
                         <button type="submit" class="btn btn-submit">
                             <svg class="svg-search" viewBox="0 0 32 32"><g><path d="M29.71,28.29l-10-10a10,10,0,1,0-1.42,1.42l10,10ZM4,12a8,8,0,1,1,8,8A8,8,0,0,1,4,12Z"/></g></svg>
                         </button>
                     </form>
-                </b-collapse>
+                </div>
             </div>
             <div class="column">
-                <button class="btn-show-search-mobile" type="button" title="Pesquisar" v-b-toggle.header-search>
+                <button class="btn-show-search-mobile" type="button" title="Pesquisar">
                     <svg class="svg-search" viewBox="0 0 32 32"><g><path d="M29.71,28.29l-10-10a10,10,0,1,0-1.42,1.42l10,10ZM4,12a8,8,0,1,1,8,8A8,8,0,0,1,4,12Z"/></g></svg>
                 </button>
-                <router-link to="" class="favorites" title="Lista de desejos (2 itens)">
+                <router-link to="/lista-de-desejos" class="favorites" title="Lista de desejos (2 itens)">
                     Lista de desejos
                     <svg class="svg-heart" enable-background="new 0 0 48 48" viewBox="0 0 48 48"><path clip-rule="evenodd" d="M24.804,43.648L24,44l-0.804-0.352C12.862,37.313,2,22.893,2,14.884  C2.035,8.326,7.404,3.002,14,3.002c4.169,0,7.849,2.128,10,5.349c2.151-3.221,5.831-5.349,10-5.349c6.596,0,11.965,5.324,12,11.882  C46,22.893,35.138,37.313,24.804,43.648z M34,4.993c-3.354,0-6.469,1.667-8.335,4.46L24,11.946l-1.665-2.494  C20.469,6.66,17.354,4.993,14,4.993c-5.484,0-9.971,4.442-10,9.891c0,7.064,10.234,20.808,20,26.917  c9.766-6.109,20-19.852,20-26.907C43.971,9.435,39.484,4.993,34,4.993z" fill-rule="evenodd"/></svg>
                 </router-link>
             </div>
             <div class="column">
-                <router-link to="" class="cart" title="Meu carrinho de compras">
+                <router-link to="/carrinho" class="cart" title="Meu carrinho de compras">
                     <span class="quantity">18</span>
                     <svg class="svg-shopping-bag" enable-background="new 0 0 48 48" viewBox="0 0 48 48"><path clip-rule="evenodd" d="M43,46H5c-2.209,0-4-1.791-4-4l4-24c0.678-3.442,2.668-4,4.877-4h2.652  C14.037,7.052,18.602,2,24,2s9.963,5.052,11.471,12h2.652c2.209,0,4.199,0.558,4.877,4l4,24C47,44.209,45.209,46,43,46z M24,4  c-4.352,0-8.045,4.178-9.418,10h18.837C32.045,8.178,28.353,4,24,4z M41,18c-0.308-1.351-0.957-2-2.37-2h-2.828  C35.925,16.976,36,17.975,36,19c0,0.552-0.447,1-1,1s-1-0.448-1-1c0-1.027-0.069-2.031-0.201-3H14.201C14.07,16.969,14,17.973,14,19  c0,0.552-0.447,1-1,1s-1-0.448-1-1c0-1.025,0.075-2.024,0.197-3H9.369C7.957,16,7.309,16.649,7,18L3,42c0,1.104,0.896,2,2,2h38  c1.104,0,2-0.896,2-2L41,18z" fill-rule="evenodd"/></svg>
                 </router-link>
@@ -132,27 +139,39 @@
 import MenuCategoriesDesktop from '@/components/MenuCategoriesDesktop.vue';
 import MenuCategoriesMobile from '@/components/MenuCategoriesMobile.vue';
 import company from '@/api/company.json'
+import CollapseIcons from '@/components/CollapseIcons.vue';
+import Collapse from '@/components/Collapse.vue';
 
 export default {
     name: 'Header',
     data(){
         return {
-            authenticated: false,
+            authenticated: true,
             dropdownMyAccount: false,
             searchMobile: false,
+            menuMobile: false,
+            listProfile: true,
             company
         }
     },
     components: {
         MenuCategoriesDesktop,
-        MenuCategoriesMobile
+        MenuCategoriesMobile,
+        CollapseIcons,
+        Collapse
     },
     methods: {
+        toggleListProfile(){
+            this.listProfile = !this.listProfile
+        },
+        toggleMenuMobile(){
+            this.menuMobile = !this.menuMobile
+        },
         toggleMyAccount(){
-            this.dropdownMyAccount = !this.dropdownMyAccount;
+            this.dropdownMyAccount = !this.dropdownMyAccount
         },
         toggleSearchMobile(){
-            this.searchMobile = !this.dropdownMyAccount;
+            this.searchMobile = !this.dropdownMyAccount
         }
     }
 }
@@ -170,12 +189,9 @@ export default {
     grid-template-rows: max-content;
     grid-template-columns: 1fr max-content;
     transition: left 0.25s linear;
+    left: -100%;
 
-    &.hidden {
-        left: -100%;
-    }
-
-    &.show {
+    &.active {
         left: 0;
     }
 
@@ -193,14 +209,14 @@ export default {
 
     .nav-login {
         background: #fff;
-        border-bottom: 4px solid $color-border;
+        border-bottom: 4px solid $border-color;
         grid-column: 1;
         grid-row: 1;
 
         > ul {
 
             > li {
-                border-bottom: 1px solid $color-border;
+                border-bottom: 1px solid $border-color;
 
                 > a,
                 > button {
@@ -212,7 +228,7 @@ export default {
                     text-align: left;
                     font-size: $font-16px;
 
-                    [class*="icon-"] { 
+                    .collapse-icons svg { 
                         position: absolute;
                         right: $column-gap;
                         top: $column-gap;
@@ -228,7 +244,7 @@ export default {
         overflow: hidden;
 
         > ul {
-            background: $color-border;
+            background: $border-color;
             padding: 10px 0;
         }
 
@@ -241,7 +257,7 @@ export default {
 
 #header {
     background: #fff;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0; 
@@ -268,7 +284,7 @@ export default {
         background: #fff;
         position: absolute;
         right: 0;
-        border: 1px solid $color-border;
+        border: 1px solid $border-color;
         text-align: left;
         top: calc(100% + 8px);
         z-index: 2;
@@ -278,7 +294,7 @@ export default {
         color: rgba(0,0,0,0.65);
 
         li + li {
-            border-top: 1px solid fade($color-border, 50%);
+            border-top: 1px solid fade($border-color, 50%);
         }
 
         a {
@@ -319,7 +335,7 @@ export default {
             border-width: ($arrow-height + 1) ($arrow-width + 1);
             top: -(($arrow-height * 2) + 2);
             right: 9px;
-            border-color: transparent transparent $color-border;
+            border-color: transparent transparent $border-color;
         }
     }
 
@@ -372,7 +388,7 @@ export default {
         .quantity {
             $size: 20px;
 
-            background: $color-primary;
+            background: $primary-color;
             border-radius: 100%;
             text-align: center;
             color: #fff;
@@ -481,7 +497,7 @@ export default {
 
             .input {
                 height: 40px;
-                border-color: $color-border;
+                border-color: $border-color;
                 background: #fff;
                 border-radius: $form-radius;
             }
@@ -570,7 +586,7 @@ export default {
 
         .bar-bottom {
             position: relative;
-            background: $color-primary;
+            background: $primary-color;
         }
     }
 }

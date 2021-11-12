@@ -3,37 +3,35 @@
         
         <ul>
             <!-- Primeiro nível -->
-            <li v-for="(category, index) in categories" :key="index">
+            <li v-for="(category, index) in categories" :key="index" :data-id="`category-${index}`">
                 <router-link :to="category.link">{{ category.name }}</router-link>
 
                 <!-- Segundo nível -->
                 <template v-if="category['subcategories']">
-                    <button type="button" v-b-toggle="`category-${index}`">
-                        <font-awesome-icon icon="angle-down" class="icon-collapsed" />
-                        <font-awesome-icon icon="angle-up" class="icon-show" />
+                    <button type="button" :data-toggle="`category-${index}`">
+                        <CollapseIcons />
                     </button>
 
-                    <b-collapse class="submenu-primary" :id="`category-${index}`">
+                    <div class="submenu-primary" :id="`category-${index}`">
                         <ul>
                             <li v-for="(subcategoryPrimary, subindexPrimary) in category['subcategories']" :key="subindexPrimary">
                                 <router-link :to="subcategoryPrimary.link">{{ subcategoryPrimary.name }}</router-link>
 
                                 <!-- Terceiro nível -->
-                                <button v-if="subcategoryPrimary['subcategories']" type="button" v-b-toggle="`subcategory-primary-${subindexPrimary}`">
-                                    <font-awesome-icon icon="angle-down" class="icon-collapsed" />
-                                    <font-awesome-icon icon="angle-up" class="icon-show" />
+                                <button v-if="subcategoryPrimary['subcategories']" type="button" :data-toggle="`subcategory-primary-${subindexPrimary}`">
+                                    <CollapseIcons />
                                 </button>
 
-                                <b-collapse v-if="subcategoryPrimary['subcategories']" class="submenu-secondary" :id="`subcategory-primary-${subindexPrimary}`">
+                                <div v-if="subcategoryPrimary['subcategories']" class="submenu-secondary" :id="`subcategory-primary-${subindexPrimary}`">
                                     <ul>
                                         <li v-for="(subcategorySecondary, subindexSecondary) in subcategoryPrimary['subcategories']" :key="subindexSecondary">
                                             <router-link :to="subcategorySecondary.link">{{ subcategorySecondary.name }}</router-link>
                                         </li>
                                     </ul>
-                                </b-collapse>
+                                </div>
                             </li>
                         </ul>
-                    </b-collapse>
+                    </div>
                 </template>
             </li>
         </ul>
@@ -41,14 +39,31 @@
 </template>
 <script>
 import categories from '@/api/categories.json'
+import CollapseIcons from '@/components/CollapseIcons.vue'
 
 export default {
     name: 'MenuCategoriesMobile',
+    components: {
+        CollapseIcons
+    },
     data(){
         return {
             categories
         }
         
+    },
+    async created() {
+        await this.prepareCategories()
+    },
+    methods: {
+        prepareCategories(){
+
+            this.categories.forEach(element => {
+                
+                this.categories.push({... element, visible: false})
+                console.log(element)
+            })
+        }
     }
 }
 </script>
@@ -63,7 +78,7 @@ export default {
         margin-left: 0;
 
         > li {
-            border-bottom: 1px solid $color-border;
+            border-bottom: 1px solid $border-color;
             display: grid;
             grid-template-columns: auto 50px;
 
@@ -88,7 +103,7 @@ export default {
 
     .submenu-primary {
         grid-column: 1 / 3;
-        border-top: 1px solid $color-border;
+        border-top: 1px solid $border-color;
         background: rgba(0, 0, 0, 0.05);
         transition: all 0.25s linear;
         overflow: hidden;
@@ -107,7 +122,7 @@ export default {
                 }
 
                 + li {
-                    border-top: 1px solid $color-border;
+                    border-top: 1px solid $border-color;
                 }
 
                 button {

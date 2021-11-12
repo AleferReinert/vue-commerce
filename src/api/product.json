@@ -3,6 +3,9 @@
     "id": "12345678",
     "price": "9990",
     "sizes": ["p","m","g","gg","egg"],
+    "images": [
+        "@/assets/img/products/product-1-img-1.jpg"
+    ],
     "colors": [
         {"name": "Vermelho","value": "red"},
         {"name": "Azul","value": "blue"},

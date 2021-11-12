@@ -1,7 +1,7 @@
 <template>
   <main id="page-product">
         <div class="container">
-            <Breadcrumb current-page="Nome do produto" />
+            <Breadcrumb :current-page="productData.title" />
             
             <div class="page-content">
                 <div class="product-images">
@@ -63,6 +63,12 @@
                             Adicionar a lista de desejos
                         </button>
                     </form>
+                    <form action="" id="shipping-calculate">
+                        <label for="zip-code">Calcular frete e prazo</label>
+                        <input type="text" class="input" placeholder="Digite seu CEP" v-mask="'#####-###'" id="zip-code">
+                        <button type="submit" class="btn btn-default">Calcular</button>
+                        <a href="https://buscacepinter.correios.com.br/app/localidade_logradouro/index.php" target="_blank">Não sei meu CEP</a>                        
+                    </form>
                 </div>
 
                 <section id="more-information">
@@ -118,12 +124,19 @@ import Products from '@/components/Products'
 import productData from '@/api/product.json'
 import salesRules from '@/api/salesRules.json'
 import formatedMoney from '@/mixins/formatedMoney.js'
+import { mask } from 'vue-the-mask'
 
 export default {
     name: 'ProdutoDetalhes',
     components: {
         Breadcrumb,
         Products
+    },
+    directives: {
+        mask: (el, binding) => {
+            if (!binding.value) return
+            mask(el, binding);
+        }
     },
     mixins: [formatedMoney],
     data(){
@@ -197,7 +210,7 @@ export default {
             .price {
                 font-weight: 700;
                 font-size: $font-22px;
-                color: $color-success;
+                color: $success-color;
             }
 
             .discount {
@@ -258,9 +271,9 @@ export default {
             }
 
             input:checked::after {
-                background: $color-success;
-                border-top-color: $color-success;
-                border-bottom-color: $color-success;
+                background: $success-color;
+                border-top-color: $success-color;
+                border-bottom-color: $success-color;
             }
 
             input:checked + .size {
@@ -282,7 +295,7 @@ export default {
             input[value="yellow"] {
 
                 &:checked + svg {
-                    color: $color-black-default;
+                    color: $black-color;
                 }
             }
 
@@ -296,7 +309,7 @@ export default {
 
             [type=radio] {
                 border-radius: 100%;
-                border: 1px solid $color-border;
+                border: 1px solid $border-color;
 
                 &::after {
                     background: transparent;
@@ -312,34 +325,59 @@ export default {
         .btn-buy {
             width: 100%;
             margin: 10px 0;
-
-            svg {
-                margin-right: 8px;
-            }
         }
 
         .btn-favorites {
             width: 100%;
-
-            svg {
-                margin-right: 8px;
-            }
         }
     }
 }
 
+#shipping-calculate {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    padding: 15px 0;
+    margin: 20px 0 0;
+
+    label {
+        display: block;
+        font-size: $font-14px;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 130px;
+
+        &:focus {
+            border-color: $border-color;
+        }
+    }
+
+    .btn {
+        margin-left: -1px;
+        background: $border-color;
+    }
+
+    a {
+        text-decoration: underline;
+        font-size: $font-10px;
+        margin-left: 10px;
+        color: $link-color;
+    }
+}
+
 #more-information {
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid $border-color;
     margin: $row-gap 0;
 
     > div {
         padding: 15px 0;
-        border-top: 1px solid $color-border;
+        border-top: 1px solid $border-color;
 
         .title, svg {
             font-size: $font-16px;
             font-weight: 600;
-            color: $color-black-default;
+            color: $black-color;
         }
     }
 }
@@ -425,30 +463,6 @@ export default {
             grid-column-gap: 0;
             grid-row-gap: 0;
         }
-
-        .owl-nav {
-            opacity: 0.5;
-            transition: all 0.15s linear;
-
-            .owl-prev,
-            .owl-next {
-                position: absolute;
-                top: 120px;
-                font-size: $font-20px;
-            }
-
-            .owl-prev {
-                left: 0;
-            }
-
-            .owl-next {
-                right: 0;
-            }
-        }
-
-        .owl-carousel:hover .owl-nav {
-            opacity: 1;
-        }
     }
 }
 
@@ -462,22 +476,6 @@ export default {
     }
 
     #related-products {
-
-        .owl-nav {
-
-            .owl-prev,
-            .owl-next {
-                top: 110px;
-            }
-
-            .owl-prev {
-                left: -25px;
-            }
-
-            .owl-next {
-                right: -25px;
-            }
-        }
     }
 }
 
@@ -500,49 +498,6 @@ export default {
             .product-images {
                 grid-column: 1;
                 height: $size-full-area;
-
-                // .owl-stage-outer {
-                //     width: $size-items-area;
-
-                //     a {
-                //         display: block;
-                //     }
-                // }
-
-                // .owl-nav{
-                //     position: absolute;
-                //     width: $size-items-area;
-                //     top: 0;
-
-                //     .owl-prev,
-                //     .owl-next {
-                //         position: absolute;
-                //         top: ($size-item / 2) - ($button-nav-width / 2);
-                //         font-size: 0;
-
-                //         > span {
-                //             font-size: $button-nav-width;
-                //         }
-                //     }
-
-                //     .owl-prev {
-                //         left: -($button-nav-height + $margin);
-                //     }
-
-                //     .owl-next {
-                //         right: -($button-nav-height + $margin);
-                //     }
-                // }
-
-                // .owl-item {
-                //     width: $size-item !important;
-                //     height: $size-item;
-                //     transform: rotate(-90deg);
-                // }
-                // .owl-carousel{
-                //     transform: rotate(90deg);
-                //     margin-top: ($button-nav-height + $margin);
-                // }
             }
             
             .product-image-master {
@@ -561,22 +516,6 @@ export default {
     }
 
     #related-products {
-
-        .owl-nav {
-
-            .owl-prev,
-            .owl-next {
-                top: 100px;
-            }
-
-            .owl-prev {
-                left: -20px;
-            }
-
-            .owl-next {
-                right: -20px;
-            }
-        }
     }
 }
 
@@ -598,61 +537,12 @@ export default {
 
             .product-images {
                 height: $size-full-area;
-
-                // .owl-stage-outer {
-                //     width: $size-items-area;
-                // }
-
-                // .owl-nav{
-                //     width: $size-items-area;
-
-                //     .owl-prev,
-                //     .owl-next {
-                //         top: ($size-item / 2) - ($button-nav-width / 2);
-
-                //         > span {
-                //             font-size: $button-nav-width;
-                //         }
-                //     }
-
-                //     .owl-prev {
-                //         left: -($button-nav-height + $margin);
-                //     }
-
-                //     .owl-next {
-                //         right: -($button-nav-height + $margin);
-                //     }
-                // }
-
-                // .owl-item {
-                //     width: $size-item !important;
-                //     height: $size-item;
-                // }
-                // .owl-carousel{
-                //     margin-top: ($button-nav-height + $margin);
-                // }
             }
         }
     }
 
     #related-products {
         margin-bottom: $row-gap;
-
-        .owl-nav {
-
-            .owl-prev,
-            .owl-next {
-                top: 123px;
-            }
-
-            .owl-prev {
-                left: -25px;
-            }
-
-            .owl-next {
-                right: -25px;
-            }
-        }
     }
 }
 </style>

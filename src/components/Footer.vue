@@ -5,18 +5,18 @@
                 <div class="site-map">
                     <div class="column">
                         <template v-if="$isMobile()">
-                            <h2 v-b-toggle="'list-about'">
+                            <h2>
                                 Institucional
                                 <CollapseIcons />
                             </h2>
-                            <b-collapse class="list" id="list-about" >
+                            <div class="list" id="list-about" >
                                 <ul>
                                     <li><router-link to="#">Lojas</router-link></li>
                                     <li><router-link to="/sobre-nos">Sobre nós</router-link></li>
                                     <li><router-link to="#">Trabalhe conosco</router-link></li>
                                     <li><a href="#" target="_blank">Blog</a></li>
                                 </ul>
-                            </b-collapse>
+                            </div>
                         </template>
                         <template v-else>
                             <h2>Institucional</h2>
@@ -32,18 +32,18 @@
                     </div>
                     <div class="column">
                         <template v-if="$isMobile()">
-                            <h2 v-b-toggle="'list-support'">
+                            <h2>
                                 Ajuda e suporte
                                 <CollapseIcons />
                             </h2>
-                            <b-collapse class="list" id="list-support">
+                            <div class="list" id="list-support">
                                 <ul>
                                     <li><router-link to="/prazos-de-entrega">Prazos de entrega</router-link></li>
                                     <li><router-link to="/trocas-e-devolucoes">Trocas e devoluções</router-link></li>
                                     <li><router-link to="/perguntas-frequentes">Perguntas Frequentes</router-link></li>
                                     <li><router-link to="/politica-de-privacidade">Política de privacidade</router-link></li>
                                 </ul>
-                            </b-collapse>
+                            </div>
                         </template>
                         <template v-else>
                             <h2>Ajuda e suporte</h2>
@@ -59,17 +59,17 @@
                     </div>
                     <div class="column">
                         <template v-if="$isMobile()">
-                            <h2 v-b-toggle="'list-contact'">
+                            <h2>
                                 Contato
                                 <CollapseIcons />
                             </h2>
-                            <b-collapse class="list" id="list-contact">
+                            <div class="list" id="list-contact">
                                 <ul>
                                     <li><a href="#">Tel.: {{ company.phone1 }}</a></li>
                                     <li><a href="#">Tel.2: {{ company.phone2 }}</a></li>
                                     <li><a href="#">E-mail: {{ company.email }}</a></li>
                                 </ul>
-                            </b-collapse>
+                            </div>
                         </template>
                         <template v-else>
                             <h2>Contato</h2>
@@ -165,7 +165,7 @@ $space-vertical: 20px;
 
 #footer {
     background: rgba(0,0,0,0.015);
-    border-top: 1px solid $color-border;
+    border-top: 1px solid $border-color;
     text-align: center;
 
     .bar-top {
@@ -193,7 +193,7 @@ $space-vertical: 20px;
             .column {
                 padding: $space-vertical 0;
                 margin: 0 (-$column-gap);
-                border-bottom: 1px solid $color-border;
+                border-bottom: 1px solid $border-color;
                 
                 .list {
                     transition: all 0.25s linear;
@@ -223,7 +223,7 @@ $space-vertical: 20px;
                 }
     
                 a:hover svg {
-                    color: $color-primary;
+                    color: $primary-color;
                 }
     
                 li {
@@ -270,7 +270,7 @@ $space-vertical: 20px;
         .developed {
             font-size: $font-12px;
             margin: 0 -$column-gap;
-            border-top: 1px solid $color-border;
+            border-top: 1px solid $border-color;
             padding: $space-vertical 0;
 
             &:first-line {
@@ -280,7 +280,7 @@ $space-vertical: 20px;
     }
 
     .bar-bottom {
-        border-top: 1px solid $color-border;
+        border-top: 1px solid $border-color;
         padding: $space-vertical 0;
 
         .address, p {
@@ -321,7 +321,7 @@ $space-vertical: 20px;
         }
 
         .bar-top {
-            border-bottom: 1px solid $color-border;
+            border-bottom: 1px solid $border-color;
 
             .site-map {
                 grid-template-columns: repeat(3, 1fr);
@@ -398,7 +398,7 @@ $space-vertical: 20px;
         }
 
         .bar-top {
-            border-bottom: 1px solid $color-border;
+            border-bottom: 1px solid $border-color;
 
             .container {
                 max-width: $container-large;

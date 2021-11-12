@@ -4,12 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 // Colors
-$color-primary: #f1625f;
-$color-secondary: #3e3b3a;
-$color-black-default: rgba(0,0,0,0.85);
-$color-link: rgb(8, 101, 138);
-$color-border: #dedede;
-$color-success: #419b18;
+$primary-color: #f1625f;
+$secondary-color: #3e3b3a;
+$black-color: rgba(0,0,0,0.85);
+$link-color: rgb(8, 101, 138);
+$border-color: #dedede;
+$success-color: #419b18;
+$error-color: #Fc0d1b;
 
 // Fonts
 $font-primary: 'Montserrat', sans-serif;
@@ -63,7 +64,7 @@ body, p, ul, h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-ul {
+ul, ol {
     padding: 0;
 }
 
@@ -128,7 +129,7 @@ img {
     height: auto;
 }
 
-// Animations
+// Transitions
 .fade-enter-active, .fade-leave-active {
     transition: opacity .15s;
 }
@@ -181,41 +182,54 @@ img {
     font-family: $font-primary;
     font-size: $font-12px;
     height: 40px;
+    line-height: 40px;
     border-radius: $form-radius;
     box-sizing: border-box;
     transition: all 0.15s linear;
+    display: inline-flex;
+    letter-spacing: 0.5px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .btn-default {
-    color: $color-black-default;
-    border: 1px solid $color-border;
+    color: $black-color;
+    border: 1px solid $border-color;
 }
 
 .btn-primary {
     color: #fff;
-    background: $color-primary;
+    background: $primary-color;
 
     &:hover {
-        background: darken($color-primary, 5%);
+        background: darken($primary-color, 5%);
     }
 }
 
 .btn-success {
     color: #fff;
-    background: $color-success;
+    background: $success-color;
 
     &:hover {
-        background: darken($color-success, 5%);
+        background: darken($success-color, 5%);
     }
+}
+
+.btn-link {
+    font-size: $font-14px;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
 }
 
 // Inputs
 .input {
-    border: 1px solid $color-border;
+    border: 1px solid $border-color;
     border-radius: $form-radius;
     height: 40px;
     background: #fff;
-    padding: 0 10px;
+    padding: 0 15px;
     font-size: $font-12px;
     font-family: $font-primary;
     box-sizing: border-box;
@@ -228,7 +242,7 @@ img {
     }
 
     &:focus {
-        border-color: darken($color-border, 30%);
+        border-color: darken($border-color, 30%);
     }
 }
 
@@ -245,15 +259,15 @@ img {
         width: 100%;
         height: 100%;
         background: #fff;
-        border: 1px solid $color-border;
+        border: 1px solid $border-color;
         box-sizing: border-box;
         overflow: hidden;
         transition: all .1s linear;
     }
 
     &:checked::after {
-        border-color: $color-primary;
-        background-color: $color-primary;
+        border-color: $primary-color;
+        background-color: $primary-color;
     }
 }
 
@@ -270,7 +284,7 @@ img {
         width: 100%;
         height: 100%;
         background: #fff;
-        border: 1px solid $color-border;
+        border: 1px solid $border-color;
         border-radius: 100%;
         box-sizing: border-box;
         overflow: hidden;
@@ -278,21 +292,62 @@ img {
     }
 
     &:checked::after {
-        border-color: $color-primary;
+        border-color: $primary-color;
         border-width: 6px;
     }
 }
 
 select {
     transition: all 0.5s linear;
-    border: 1px solid $color-border;
+    border: 1px solid $border-color;
     height: 40px;
     padding: 0 10px;
 }
 
 span.required {
-    color: #Fc0d1b;
+    color: $error-color;
     margin-right: 3px;
+}
+
+.form-control {
+    display: block;
+    position: relative;
+    margin-bottom: 25px;
+
+    .check-icon {
+        display: none;
+        position: absolute;
+        bottom: 11px;
+        right: 10px;
+        color: $success-color;
+    }
+}
+
+.error-message {
+    display: block;
+    color: $error-color;
+    font-size: $font-10px;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+}
+
+input.valid + .check-icon {
+    display: block;
+}
+
+input.invalid {
+    border-color: $error-color;
+}
+
+// Tables
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    font-weight: inherit;
 }
 
 // Typography
@@ -302,7 +357,8 @@ html {
 
 body {
 	font-family: $font-primary;
-	color: $color-black-default;
+	color: $black-color;
+    letter-spacing: 0.5px;
 }
 
 .page-title {
@@ -311,7 +367,7 @@ body {
 
 	.title {
 		font-size: $font-26px;
-		color: $color-secondary;
+		color: $secondary-color;
 	}
 }
 
@@ -330,7 +386,7 @@ body {
     }
 
     h2 {
-        color: $color-black-default;
+        color: $black-color;
         font-size: $font-18px;
         font-weight: 500;
         margin-top: 30px;
@@ -348,15 +404,26 @@ body {
     }
 }
 
+// Minha conta
+.page-my-account {
+
+    .grid {
+        display: grid;
+        grid-template-columns: max-content auto;
+        column-gap: 15px;
+        margin-bottom: 45px;
+    }
+}
+
 // Cabeçalho de seção (detalhes do produto)
 .header-section {
 	margin-bottom: 25px;
-	border-bottom: 2px solid $color-primary; 
+	border-bottom: 2px solid $primary-color; 
 	padding-bottom: 8px;
 
 	.title {
 		font-size: $font-18px;
-		color: $color-secondary;
+		color: $secondary-color;
 		text-transform: $capitalization;
 	}
 }

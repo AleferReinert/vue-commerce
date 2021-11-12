@@ -1,41 +1,56 @@
 <template>
   <main id="page-login">
         <div class="container">
-            
             <div class="box-login">
                 <h1 class="page-title">Entrar</h1>
 
                 <form action="">
-                    <div class="form-control">
-                        <label for="form-login-email">Seu e-mail:</label>
-                        <input type="text" id="form-login-email" placeholder="Ex: joaodasilva@gmail.com" class="input" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="form-login-password">Sua senha:</label>
-                        <a href="" class="forgot-password">Esqueci minha senha</a>
-                        <input type="password" id="form-login-password" class="input" placeholder="Mínimo de 8 caracteres" required>
-                    </div>
+                    <customInput label="E-mail" name="email" v-model="email" placeholder="Ex: joaodasilva@gmail.com" required />
+                    <customInput 
+                        label="Sua senha" 
+                        type="password" 
+                        name="password" 
+                        v-model="password" 
+                        placeholder="Mínimo de 8 caracteres"
+                        linkLabel="Esqueci minha senha"
+                        linkHref="/"
+                        required 
+                    />
+                    
                     <button type="submit" class="btn btn-success">Entrar</button>
                 </form>
 
                 <p class="message-to-cadaster">
                     Não tem conta ainda?<router-link to="/cadastro" class="link-register">Cadastre-se!</router-link>
                 </p>
-                
             </div>
-            
         </div>
 	</main>
 </template>
 
 <script>
+import customInput from '@/components/CustomInput.vue'
+
 export default {
-    name: 'Login'
+    name: 'Login',
+    components: {
+        customInput
+    },
+    data(){
+        return {
+            email: '',
+            password: ''
+        }
+    }
 }
 </script>
 
 <style lang="scss">
 #page-login {
+
+    .page-title {
+        text-align: center;
+    }
 
     .box-login {
         max-width: 420px;
@@ -61,11 +76,11 @@ export default {
 
         a {
             font-size: $font-12px;
-            color: $color-link;
+            color: $link-color;
             align-self: center;
 
             &:hover {
-                color: darken($color-link, 5%);
+                color: darken($link-color, 5%);
             }
         }
 

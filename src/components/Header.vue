@@ -138,7 +138,7 @@
 <script>
 import MenuCategoriesDesktop from '@/components/MenuCategoriesDesktop.vue';
 import MenuCategoriesMobile from '@/components/MenuCategoriesMobile.vue';
-import company from '@/api/company.json'
+import company from '@/api/company.json';
 import CollapseIcons from '@/components/CollapseIcons.vue';
 import Collapse from '@/components/Collapse.vue';
 
@@ -162,16 +162,16 @@ export default {
     },
     methods: {
         toggleListProfile(){
-            this.listProfile = !this.listProfile
+            this.listProfile = !this.listProfile;
         },
         toggleMenuMobile(){
-            this.menuMobile = !this.menuMobile
+            this.menuMobile = !this.menuMobile;
         },
         toggleMyAccount(){
-            this.dropdownMyAccount = !this.dropdownMyAccount
+            this.dropdownMyAccount = !this.dropdownMyAccount;
         },
         toggleSearchMobile(){
-            this.searchMobile = !this.dropdownMyAccount
+            this.searchMobile = !this.dropdownMyAccount;
         }
     }
 }

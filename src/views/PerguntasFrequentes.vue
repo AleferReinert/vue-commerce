@@ -1,5 +1,5 @@
 <template>
-  <main id="page-faq">
+    <main id="page-faq">
         <div class="container">
             <Breadcrumb current-page="Perguntas Frequentes" />
             
@@ -20,13 +20,12 @@
                     </div>
                 </li>
             </ul>
-		</div>
-            
+		</div>     
 	</main>
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb'
+import Breadcrumb from '@/components/Breadcrumb';
 
 export default {
     name: 'PerguntasFrequentes',
@@ -35,18 +34,19 @@ export default {
     },
     methods: {
         showAnswer(id){
-            let question = document.getElementById(`question-${id}`)
+            let question = document.getElementById(`question-${id}`);
 
             if(question.classList.contains('active')){
-                question.classList.remove('active')
+                question.classList.remove('active');
             } else {
-                question.classList.add('active')
+                question.classList.add('active');
                 
             }
         }
     }
 }
 </script>
+
 <style lang="scss">
 #page-faq {
     margin: $row-gap 0;

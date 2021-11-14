@@ -40,13 +40,12 @@
                 </table>
             </template>
 		</div>
-            
 	</main>
 </template>
 
 <script>
-import Product from '@/api/product.json'
-import formatedMoney from '@/mixins/formatedMoney.js'
+import Product from '@/api/product.json';
+import formatedMoney from '@/mixins/formatedMoney.js';
 
 export default {
     name: 'ListaDeDesejos',
@@ -59,7 +58,7 @@ export default {
     },
     computed: {
         originalPrice(){
-            return this.formatedMoney(this.Product.price)
+            return this.formatedMoney(this.Product.price);
         }
     }
 }

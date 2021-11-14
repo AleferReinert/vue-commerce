@@ -24,21 +24,25 @@
                         <tbody>
                             <tr v-for="(product, index) in cartItems" :key="index">
                                 <td>
-                                    <img :alt="Product.title" src="@/assets/img/products/product-1-img-1.jpg">
+                                    <router-link to="/">
+                                        <img :alt="Product.title" src="@/assets/img/products/product-1-img-1.jpg">
+                                    </router-link>
                                 </td>
                                 <th scope="row">
-                                    {{ Product.title }}
+                                    <router-link to="/">
+                                        {{ Product.title }}
+                                    </router-link>
                                 </th>
                                 <td>
                                     <button type="button">-</button>
-                                    <input class="input quantity" type="text" inputmode="numeric" min="1">
+                                    <input class="input quantity" type="text" inputmode="numeric" min="1" value="1">
                                     <button type="button">+</button>
                                 </td>
                                 <td>
                                     {{ originalPrice }}
                                 </td>
                                 <td>
-                                    <button type="button" title="Remover">
+                                    <button class="remove-product" type="button" title="Remover">
                                         <font-awesome-icon icon="times" />
                                     </button>
                                 </td>
@@ -80,8 +84,8 @@
 </template>
 
 <script>
-import Product from '@/api/product.json'
-import formatedMoney from '@/mixins/formatedMoney.js'
+import Product from '@/api/product.json';
+import formatedMoney from '@/mixins/formatedMoney.js';
 
 export default {
     name: 'Carrinho',
@@ -94,14 +98,15 @@ export default {
     },
     computed: {
         originalPrice(){
-            return this.formatedMoney(this.Product.price)
+            return this.formatedMoney(this.Product.price);
         },
         priceWithDiscountPercentage(){
-            return this.formatedMoney(this.discountPercentage(this.Product.price))
+            return this.formatedMoney(this.discountPercentage(this.Product.price));
         }
     }
 }
 </script>
+
 <style lang="scss">
 #empty-cart {
     text-align: center;
@@ -115,6 +120,18 @@ export default {
 
 #page-cart {
     padding: 50px 0;
+
+    .remove-product {
+        padding: 15px;
+        
+        svg {
+            transition: color .15s linear;
+        }
+
+        &:hover svg {
+            color: $error-color;
+        }
+    }
 
     .page-header {
         display: flex;

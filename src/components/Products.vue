@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import salesRules from '@/api/salesRules.json'
+import salesRules from '@/api/salesRules.json';
 
 export default {
     name: 'Products',

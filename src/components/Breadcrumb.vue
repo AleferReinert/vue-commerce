@@ -20,9 +20,7 @@
 <script>
 export default {
     name: 'Breadcrumb',
-    props: [
-        'currentPage'
-    ]
+    props: ['currentPage']
 }
 </script>
 

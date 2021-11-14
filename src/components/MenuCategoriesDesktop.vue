@@ -28,8 +28,9 @@
         </ul>
     </nav>
 </template>
+
 <script>
-import categories from '@/api/categories.json'
+import categories from '@/api/categories.json';
 
 export default {
     name: 'MenuDesktop',
@@ -42,21 +43,22 @@ export default {
     },
     methods: {
         showCategories(index){
-            this.categoriesStatus = 'active'
-            this.categoriesIndex = index
+            this.categoriesStatus = 'active';
+            this.categoriesIndex = index;
         },
         closeCategories(index){
-            this.categoriesStatus = ''
-            this.categoriesIndex = index
+            this.categoriesStatus = '';
+            this.categoriesIndex = index;
         }
     },
     created(){
         return this.categories.map(function(category){
-            Object.defineProperty(category, 'active', {value: false})
+            Object.defineProperty(category, 'active', {value: false});
         })
     }
 }
 </script>
+
 <style lang="scss">
 #menu-categories {
     display: block;

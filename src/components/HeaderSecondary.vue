@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import company from '@/api/company.json'
+import company from '@/api/company.json';
 
 export default {
     name: 'HeaderSecondary',

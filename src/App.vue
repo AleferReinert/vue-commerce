@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import HeaderSecondary from '@/components/HeaderSecondary.vue'
-import Footer from '@/components/Footer.vue'
-import company from '@/api/company.json'
+import Header from '@/components/Header.vue';
+import HeaderSecondary from '@/components/HeaderSecondary.vue';
+import Footer from '@/components/Footer.vue';
+import company from '@/api/company.json';
 
 export default {
 	name: 'app',
@@ -37,9 +37,9 @@ export default {
             immediate: true,
             handler(to) {
 				if(to.meta.title){
-					document.title = `${this.company.name} - ${to.meta.title}`
+					document.title = `${this.company.name} - ${to.meta.title}`;
 				} else {
-					document.title = this.company.name
+					document.title = this.company.name;
 				}
             }
         }

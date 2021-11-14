@@ -1,21 +1,21 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Cadastro from '../views/Cadastro.vue'
-import Sobre from '../views/Sobre.vue'
-import PoliticaDePrivacidade from '../views/PoliticaDePrivacidade.vue'
-import PerguntasFrequentes from '../views/PerguntasFrequentes.vue'
-import ProdutoDetalhes from '../views/ProdutoDetalhes.vue'
-import PrazosDeEntrega from '../views/PrazosDeEntrega.vue'
-import TrocasEDevolucoes from '../views/TrocasEDevolucoes.vue'
-import Carrinho from '../views/Carrinho.vue'
-import ListaDeDesejos from '../views/ListaDeDesejos.vue'
-import MeusDados from '../views/MeusDados.vue'
-import MinhasCompras from '../views/MinhasCompras.vue'
-import Seguranca from '../views/Seguranca.vue'
-import MeusEnderecos from '../views/MeusEnderecos.vue'
-import MeusCartoes from '../views/MeusCartoes.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
+import Cadastro from '../views/Cadastro.vue';
+import Sobre from '../views/Sobre.vue';
+import PoliticaDePrivacidade from '../views/PoliticaDePrivacidade.vue';
+import PerguntasFrequentes from '../views/PerguntasFrequentes.vue';
+import ProdutoDetalhes from '../views/ProdutoDetalhes.vue';
+import PrazosDeEntrega from '../views/PrazosDeEntrega.vue';
+import TrocasEDevolucoes from '../views/TrocasEDevolucoes.vue';
+import Carrinho from '../views/Carrinho.vue';
+import ListaDeDesejos from '../views/ListaDeDesejos.vue';
+import MeusDados from '../views/MeusDados.vue';
+import MinhasCompras from '../views/MinhasCompras.vue';
+import Seguranca from '../views/Seguranca.vue';
+import MeusEnderecos from '../views/MeusEnderecos.vue';
+import MeusCartoes from '../views/MeusCartoes.vue';
 
 Vue.use(VueRouter)
 
@@ -50,7 +50,7 @@ const routes = [
 		name: 'Sobre',
 		component: Sobre,
 		meta: {
-			title: 'Sobre Nós',
+			title: 'Sobre Nós'
 		}
 	},
 	{
@@ -58,7 +58,7 @@ const routes = [
 		name: 'PoliticaDePrivacidade',
 		component: PoliticaDePrivacidade,
 		meta: {
-			title: 'Política de Privacidade',
+			title: 'Política de Privacidade'
 		}
 	},
 	{
@@ -66,7 +66,7 @@ const routes = [
 		name: 'PerguntasFrequentes',
 		component: PerguntasFrequentes,
 		meta: {
-			title: 'Perguntas Frequentes',
+			title: 'Perguntas Frequentes'
 		}
 	},
 	{
@@ -79,7 +79,7 @@ const routes = [
 		name: 'PrazosDeEntrega',
 		component: PrazosDeEntrega,
 		meta: {
-			title: 'Prazos de Entrega',
+			title: 'Prazos de Entrega'
 		}
 	},
 	{
@@ -87,7 +87,7 @@ const routes = [
 		name: 'TrocasEDevolucoes',
 		component: TrocasEDevolucoes,
 		meta: {
-			title: 'Trocas e Devoluções',
+			title: 'Trocas e Devoluções'
 		}
 	},
 	{
@@ -95,7 +95,7 @@ const routes = [
 		name: 'Carrinho',
 		component: Carrinho,
 		meta: {
-			title: 'Carrinho',
+			title: 'Carrinho'
 		}
 	},
 	{
@@ -103,19 +103,19 @@ const routes = [
 		name: 'ListaDeDesejos',
 		component: ListaDeDesejos,
 		meta: {
-			title: 'Lista de Desejos',
+			title: 'Lista de Desejos'
 		}
 	},
 	{
 		path: '/minha-conta',
-		redirect: '/minha-conta/meus-dados',
+		redirect: '/minha-conta/meus-dados'
 	},
 	{
 		path: '/minha-conta/meus-dados',
 		name: 'MeusDados',
 		component: MeusDados,
 		meta: {
-			title: 'Minha Conta - Meus Dados',
+			title: 'Minha Conta - Meus Dados'
 		}
 	},
 	{
@@ -123,7 +123,7 @@ const routes = [
 		name: 'MinhasCompras',
 		component: MinhasCompras,
 		meta: {
-			title: 'Minha Conta - Minhas Compras',
+			title: 'Minha Conta - Minhas Compras'
 		}
 	},
 	{
@@ -131,7 +131,7 @@ const routes = [
 		name: 'Seguranca',
 		component: Seguranca,
 		meta: {
-			title: 'Minha Conta - Segurança',
+			title: 'Minha Conta - Segurança'
 		}
 	},
 	{
@@ -139,7 +139,7 @@ const routes = [
 		name: 'MeusEnderecos',
 		component: MeusEnderecos,
 		meta: {
-			title: 'Minha Conta - Meus Endereços',
+			title: 'Minha Conta - Meus Endereços'
 		}
 	},
 	{
@@ -147,19 +147,18 @@ const routes = [
 		name: 'MeusCartoes',
 		component: MeusCartoes,
 		meta: {
-			title: 'Minha Conta - Meus Cartões',
+			title: 'Minha Conta - Meus Cartões'
 		}
 	}
 ]
 
 const router = new VueRouter({
 	mode: 'history',
-	//base: process.env.BASE_URL,
 	base: '/',
 	routes,
 	scrollBehavior(){
-		return { x: 0, y: 0 }
+		return { x: 0, y: 0 };
 	}
 })
 
-export default router
+export default router;

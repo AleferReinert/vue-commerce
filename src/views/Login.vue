@@ -1,11 +1,17 @@
 <template>
-  <main id="page-login">
+    <main id="page-login">
         <div class="container">
             <div class="box-login">
                 <h1 class="page-title">Entrar</h1>
 
                 <form action="">
-                    <customInput label="E-mail" name="email" v-model="email" placeholder="Ex: joaodasilva@gmail.com" required />
+                    <customInput 
+                        label="E-mail" 
+                        name="email" 
+                        v-model="email" 
+                        placeholder="Ex: joaodasilva@gmail.com" 
+                        required
+                    />
                     <customInput 
                         label="Sua senha" 
                         type="password" 
@@ -21,15 +27,19 @@
                 </form>
 
                 <p class="message-to-cadaster">
-                    Não tem conta ainda?<router-link to="/cadastro" class="link-register">Cadastre-se!</router-link>
+                    Não tem conta ainda?
+                    
+                    <router-link to="/cadastro" class="link-register">
+                        Cadastre-se!
+                    </router-link>
                 </p>
             </div>
         </div>
-	</main>
+    </main>
 </template>
 
 <script>
-import customInput from '@/components/CustomInput.vue'
+import customInput from '@/components/CustomInput.vue';
 
 export default {
     name: 'Login',

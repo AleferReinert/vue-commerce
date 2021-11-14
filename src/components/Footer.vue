@@ -139,8 +139,8 @@
 </template>
 
 <script>
-import company from '@/api/company.json'
-import CollapseIcons from '@/components/CollapseIcons.vue'
+import company from '@/api/company.json';
+import CollapseIcons from '@/components/CollapseIcons.vue';
 
 export default {
     name: 'Footer',
@@ -154,7 +154,7 @@ export default {
     },
     computed: {
         addressFormated: function(){
-            return `Rua ${this.company.address.street}, ${this.company.address.number} - Bairro ${this.company.address.district} - ${this.company.address.city} - ${this.company.address.uf} - CNPJ ${this.company.cnpj}`
+            return `Rua ${this.company.address.street}, ${this.company.address.number} - Bairro ${this.company.address.district} - ${this.company.address.city} - ${this.company.address.uf} - CNPJ ${this.company.cnpj}`;
         }
     }
 }

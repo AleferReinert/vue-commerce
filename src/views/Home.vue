@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import Products from '@/components/Products.vue'
-import Newsletter from '@/components/Newsletter.vue'
+import Products from '@/components/Products.vue';
+import Newsletter from '@/components/Newsletter.vue';
 
 export default {
 	name: 'Home',

@@ -9,11 +9,13 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: 'Newsletter'
 }
 </script>
+
 <style lang="scss">
 .bar-newsletter {
     background: rgba(63, 49, 49, 0.075);

@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import customInput from '@/components/CustomInput.vue'
+import customInput from '@/components/CustomInput.vue';
 
 export default {
     name: 'Cadastro',
@@ -129,10 +129,10 @@ export default {
     },
     watch: {
         tel(){
-            this.whatsapp !== 'no' ? this.whatsapp = this.tel : ''
+            this.whatsapp !== 'no' ? this.whatsapp = this.tel : '';
         },
         whatsapp(){
-            this.whatsapp === null ? this.whatsapp = this.tel : ''
+            this.whatsapp === null ? this.whatsapp = this.tel : '';
         }
     }
 }

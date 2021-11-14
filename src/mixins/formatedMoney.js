@@ -10,7 +10,7 @@ export default {
     },
     methods: {
         formatedMoney(price){
-            Math.round(price).toString()
+            Math.round(price).toString();
             price = price.replace(/\D/g, '');
             price = price.replace(/(\d{1,2})$/, ',$1');
             price = price.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
@@ -19,7 +19,7 @@ export default {
             return price
         },
         discountPercentage(price){
-            return Math.round((price / 100) * (100  - this.salesRules.discountPercentage)).toString()
+            return Math.round((price / 100) * (100  - this.salesRules.discountPercentage)).toString();
         }
     }
 }

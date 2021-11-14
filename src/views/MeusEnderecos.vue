@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb.vue'
-import MenuMyAccount from '@/components/MenuMyAccount.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue';
+import MenuMyAccount from '@/components/MenuMyAccount.vue';
 
 export default {
     name: 'MeusEnderecos',

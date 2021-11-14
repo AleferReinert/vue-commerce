@@ -16,6 +16,7 @@
                 </div>
                 <div class="product-infos">
                     <h1 class="title">{{ productData.title }}</h1>
+                    <Rating rating="4.1" quantity="5" />
                     <p class="price-original">De <span>{{ originalPrice }}</span></p>
                     <p class="price-final">
                         Por 
@@ -114,23 +115,24 @@
                 </div>
             </section>
 		</div>
-            
 	</main>
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb'
-import Products from '@/components/Products'
-import productData from '@/api/product.json'
-import salesRules from '@/api/salesRules.json'
-import formatedMoney from '@/mixins/formatedMoney.js'
-import { mask } from 'vue-the-mask'
+import Breadcrumb from '@/components/Breadcrumb';
+import Products from '@/components/Products';
+import productData from '@/api/product.json';
+import salesRules from '@/api/salesRules.json';
+import formatedMoney from '@/mixins/formatedMoney.js';
+import { mask } from 'vue-the-mask';
+import Rating from '@/components/Rating.vue';
 
 export default {
     name: 'ProdutoDetalhes',
     components: {
         Breadcrumb,
-        Products
+        Products,
+        Rating
     },
     directives: {
         mask: (el, binding) => {
@@ -147,10 +149,10 @@ export default {
     },
     computed: {
         originalPrice(){
-            return this.formatedMoney(this.productData.price)
+            return this.formatedMoney(this.productData.price);
         },
         priceWithDiscountPercentage(){
-            return this.formatedMoney(this.discountPercentage(this.productData.price))
+            return this.formatedMoney(this.discountPercentage(this.productData.price));
         }
     }
 }

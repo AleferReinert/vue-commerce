@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
-import { mask } from 'vue-the-mask'
+import { ValidationProvider } from 'vee-validate';
+import { mask } from 'vue-the-mask';
 
 export default {
     name: "CustomInput",

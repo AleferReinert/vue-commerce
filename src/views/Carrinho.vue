@@ -34,9 +34,7 @@
                                     </router-link>
                                 </th>
                                 <td>
-                                    <button type="button">-</button>
-                                    <input class="input quantity" type="text" inputmode="numeric" min="1" value="1">
-                                    <button type="button">+</button>
+                                    <CustomInputNumber value="1" max="5" size="small" />
                                 </td>
                                 <td>
                                     {{ originalPrice }}
@@ -86,10 +84,14 @@
 <script>
 import Product from '@/api/product.json';
 import formatedMoney from '@/mixins/formatedMoney.js';
+import CustomInputNumber from '@/components/CustomInputNumber.vue'
 
 export default {
     name: 'Carrinho',
     mixins: [formatedMoney],
+    components: {
+        CustomInputNumber
+    },
     data(){
         return {
             Product,

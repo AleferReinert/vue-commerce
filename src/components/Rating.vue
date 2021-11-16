@@ -1,5 +1,5 @@
 <template>
-    <p class="rating">
+    <p class="rating" :title="`${rating} de 5 estrelas - ${quantity} avaliações`">
         {{ rating }}
         <span class="stars">
             <span class="stars-empty">
@@ -10,7 +10,7 @@
             </span>
         </span>
         
-        <span class="quantity-text">({{ quantity }} avaliações)</span>
+        <a href="" class="quantity-text">({{ quantity }} avaliações)</a>
     </p>
 </template>
 
@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss">
 .rating {
-    font-size: $font-14px;
+    font-size: $font-12px;
     display: flex;
     align-items: center;
 
@@ -62,7 +62,10 @@ export default {
 
     .quantity-text {
         opacity: 0.8;
-        font-size: $font-12px;
+
+        &:hover {
+            opacity: 0.9;
+        }
     }
 }
 </style>

@@ -46,16 +46,25 @@
                                 </legend>
                                 <div>
                                     <label v-for="(color, index) in productData.colors" :key="index" :title="color.name">
-                                        <input type="radio" name="color" :value="color.value" :style="`background: ${color.value}`">
+                                        <input type="radio" name="color" :value="color.value" :style="`background: ${color.value}`" required>
                                         <font-awesome-icon icon="check" />
                                     </label>
                                 </div>
                             </fieldset>
                         </div>
-                        <button type="submit" class="btn btn-success btn-buy">
-                            <font-awesome-icon icon="shopping-cart" />
-                            Adicionar ao carrinho
-                        </button>
+                        <div class="quantity">
+                            <label for="quantity">Quantidade:</label>
+                            <CustomInputNumber v-model="parentValue" max="10" />
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="btn btn-primary-o">
+                                <font-awesome-icon icon="shopping-cart" />
+                                Adicionar ao carrinho
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                Comprar agora
+                            </button>
+                        </div>
                     </form>
                     <form action="">
                         <input type="hidden" name="favorite" value="false">
@@ -65,8 +74,8 @@
                         </button>
                     </form>
                     <form action="" id="shipping-calculate">
-                        <label for="zip-code">Calcular frete e prazo</label>
-                        <input type="text" class="input" placeholder="Digite seu CEP" v-mask="'#####-###'" id="zip-code">
+                        <label for="zip-code">Calcular frete e prazo:</label>
+                        <input type="text" class="input" placeholder="Digite seu CEP" v-mask="'#####-###'" id="zip-code" required>
                         <button type="submit" class="btn btn-default">Calcular</button>
                         <a href="https://buscacepinter.correios.com.br/app/localidade_logradouro/index.php" target="_blank">Não sei meu CEP</a>                        
                     </form>
@@ -126,13 +135,15 @@ import salesRules from '@/api/salesRules.json';
 import formatedMoney from '@/mixins/formatedMoney.js';
 import { mask } from 'vue-the-mask';
 import Rating from '@/components/Rating.vue';
+import CustomInputNumber from '@/components/CustomInputNumber.vue';
 
 export default {
     name: 'ProdutoDetalhes',
     components: {
         Breadcrumb,
         Products,
-        Rating
+        Rating,
+        CustomInputNumber
     },
     directives: {
         mask: (el, binding) => {
@@ -144,7 +155,8 @@ export default {
     data(){
         return {
             productData,
-            salesRules
+            salesRules,
+            parentValue: 1
         }
     },
     computed: {
@@ -187,11 +199,23 @@ export default {
 
     .product-infos {
 
+        label, 
+        legend {
+            font-size: $font-14px;
+            font-weight: 400;
+            display: block;
+            margin-bottom: 2px;
+        }
+
         .title {
             font-size: $font-18px;
             font-weight: 600;
-            margin: 25px 0 15px;
+            margin: 25px 0 5px;
             text-transform: $capitalization;
+        }
+
+        .rating {
+            margin-bottom: 5px;
         }
 
         .price-original {
@@ -224,18 +248,12 @@ export default {
         .fieldset {
             margin-top: 15px;
 
-            legend {
-                font-size: $font-14px;
-                margin-bottom: 2px;
-            }
-
             label {
                 display: flex;
                 float: left;
                 position: relative;
                 justify-content: center;
                 align-items: center;
-                font-size: $font-12px;
 
                 + label {
                     margin-left: -1px;
@@ -274,8 +292,7 @@ export default {
 
             input:checked::after {
                 background: $success-color;
-                border-top-color: $success-color;
-                border-bottom-color: $success-color;
+                border-color: $success-color;
             }
 
             input:checked + .size {
@@ -324,8 +341,9 @@ export default {
             }
         }
 
-        .btn-buy {
-            width: 100%;
+        .buttons {
+            display: flex;
+            gap: 10px;
             margin: 10px 0;
         }
 
